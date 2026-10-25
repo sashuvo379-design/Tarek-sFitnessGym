@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>তারেক'স স্মার্ট ফিটনেস জিম | Tarek's Smart Fitness Gym Brahmanbaria</title>
+    
+    <!-- Google Fonts: Hind Siliguri for Bengali, Oswald for English/Headings -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ========================================== -->
+    <!--                  CSS STYLES                -->
+    <!-- ========================================== -->
+    <style>
+        /* === CSS Variables === */
+        :root {
+            --primary: #ff3b3b;
+            --primary-hover: #cc2f2f;
+            --primary-light: rgba(255, 59, 59, 0.1);
+            --bg-dark: #050505;
+            --bg-card: #121212;
+            --bg-glass: rgba(18, 18, 18, 0.7);
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #2a2a2a;
+            --success: #2ecc71;
+            --warning: #f1c40f;
+            --danger: #e74c3c;
+            --info: #3498db;
+            --font-bn: 'Hind Siliguri', sans-serif;
+            --font-en: 'Oswald', sans-serif;
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --nav-height: 80px;
+            --z-nav: 1000;
+            --z-modal: 2000;
+            --z-toast: 3000;
+        }
+
+        /* === Reset & Base === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-bn);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        /* === Typography === */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-bn);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        h1 { font-size: 3.5rem; text-transform: uppercase; font-family: var(--font-en); }
+        h2 { font-size: 2.5rem; position: relative; display: inline-block; }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        h3 { font-size: 1.75rem; }
+        p { margin-bottom: 1rem; color: var(--text-muted); }
+        a { color: var(--primary); text-decoration: none; transition: var(--transition-normal); }
+        a:hover { color: var(--text-main); }
+        
+        /* === Utility Classes === */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section-padding { padding: 100px 0; }
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        .text-primary { color: var(--primary) !important; }
+        .text-success { color: var(--success) !important; }
+        .text-danger { color: var(--danger) !important; }
+        .text-warning { color: var(--warning) !important; }
+        .text-white { color: var(--text-main) !important; }
+        .w-100 { width: 100%; }
+        .d-flex { display: flex; }
+        .align-items-center { align-items: center; }
+        .justify-content-between { justify-content: space-between; }
+        .justify-content-center { justify-content: center; }
+        .gap-1 { gap: 0.5rem; }
+        .gap-2 { gap: 1rem; }
+        .gap-3 { gap: 1.5rem; }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mt-4 { margin-top: 2rem; }
+        .mt-5 { margin-top: 3rem; }
+        .mb-4 { margin-bottom: 2rem; }
+
+        /* === Buttons === */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: var(--font-bn);
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-normal);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            gap: 10px;
+        }
+        .btn:active { transform: scale(0.95); }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--text-main);
+            box-shadow: 0 4px 15px rgba(255, 59, 59, 0.3);
+        }
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            box-shadow: 0 6px 20px rgba(255, 59, 59, 0.5);
+            color: var(--text-main);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--text-main);
+        }
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+        }
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* === Layout Grids === */
+        .grid { display: grid; gap: 30px; }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+        /* === Cards & Glassmorphism === */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            transition: var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 59, 59, 0.05), transparent);
+            z-index: -1;
+            transform: translateX(-100%);
+            transition: var(--transition-slow);
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 59, 59, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .card:hover::before { transform: translateX(100%); }
+        .glass-panel {
+            background: var(--bg-glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+        }
+
+        /* === SPA Architecture === */
+        .spa-view {
+            display: none;
+            opacity: 0;
+            animation: fadeViewIn 0.4s forwards;
+            min-height: calc(100vh - var(--nav-height));
+            padding-top: var(--nav-height);
+        }
+        .spa-view.active-view {
+            display: block;
+        }
+        @keyframes fadeViewIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === Navigation Bar === */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            height: var(--nav-height);
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: var(--z-nav);
+            transition: var(--transition-normal);
+        }
+        .navbar.scrolled {
+            background: rgba(5, 5, 5, 0.98);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: var(--font-en);
+            text-transform: uppercase;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+        .brand i {
+            color: var(--primary);
+            font-size: 2.2rem;
+            animation: pulseIcon 2s infinite;
+        }
+        @keyframes pulseIcon {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); text-shadow: 0 0 15px var(--primary); }
+            100% { transform: scale(1); }
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+        .nav-link {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            cursor: pointer;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0%; height: 2px;
+            background: var(--primary);
+            transition: var(--transition-normal);
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .nav-link:hover, .nav-link.active { color: var(--primary); }
+        
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--text-main);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* === Home: Hero Section === */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 100%), 
+                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            margin-top: calc(var(--nav-height) * -1); /* Full screen including behind nav */
+            padding-top: var(--nav-height);
+            position: relative;
+        }
+        .hero-content {
+            max-width: 800px;
+            animation: slideRight 1s ease forwards;
+        }
+        @keyframes slideRight {
+            0% { opacity: 0; transform: translateX(-50px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        .hero-subtitle {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .hero h1 span { color: var(--primary); }
+        .hero p {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+        }
+        .stat-item h4 { font-size: 2rem; color: var(--primary); margin-bottom: 5px; font-family: var(--font-en); }
+        .stat-item p { font-size: 0.9rem; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* === Home: Quick Info Bar === */
+        .info-bar {
+            background: var(--primary);
+            padding: 30px 0;
+            margin-top: -2px; /* Prevent gap */
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+        .info-item i { font-size: 2.5rem; margin-bottom: 15px; color: #fff; }
+        .info-item h3 { color: #fff; margin-bottom: 5px; }
+        .info-item p { color: rgba(255,255,255,0.8); margin: 0; }
+
+        /* === Services Section === */
+        .service-card {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .service-icon {
+            width: 80px; height: 80px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: var(--primary);
+            transition: var(--transition-normal);
+        }
+        .service-card:hover .service-icon {
+            background: var(--primary);
+            color: var(--text-main);
+            transform: rotateY(180deg);
+        }
+
+        /* === Pricing Section === */
+        .pricing-card {
+            text-align: center;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+            background: linear-gradient(to bottom, var(--bg-card), #1a0505);
+        }
+        .pricing-card.popular:hover { transform: scale(1.08) translateY(-10px); }
+        .popular-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            position: absolute;
+            top: -15px; left: 50%;
+            transform: translateX(-50%);
+            text-transform: uppercase;
+        }
+        .price-circle {
+            margin: 30px 0;
+        }
+        .price-circle h2 {
+            font-size: 3.5rem;
+            color: var(--text-main);
+            margin: 0;
+            font-family: var(--font-en);
+        }
+        .price-circle h2::after { display: none; }
+        .price-circle span { color: var(--text-muted); font-size: 1rem; }
+        .feature-list { list-style: none; margin: 0 0 30px 0; text-align: left; flex-grow: 1; }
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .feature-list li:last-child { border-bottom: none; }
+        .feature-list i.fa-check { color: var(--success); }
+        .feature-list i.fa-times { color: var(--danger); }
+        .strike-through { text-decoration: line-through; opacity: 0.5; }
+
+        /* === BMI Calculator Section === */
+        .bmi-container {
+            background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1920&auto=format&fit=crop') center/cover;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .bmi-container::before {
+            content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.85);
+        }
+        .bmi-content {
+            position: relative;
+            padding: 60px;
+            z-index: 1;
+        }
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 1.1rem;
+            font-family: var(--font-bn);
+            transition: var(--transition-normal);
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.1);
+        }
+        #bmi-result-box {
+            display: none;
+            margin-top: 30px;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid;
+            animation: zoomIn 0.5s ease;
+        }
+        @keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .bmi-meter {
+            height: 10px;
+            background: #333;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .bmi-fill {
+            height: 100%;
+            width: 0%;
+            transition: width 1s ease;
+        }
+
+        /* === Trainers Section === */
+        .trainer-card { padding: 0; }
+        .trainer-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary);
+        }
+        .trainer-info { padding: 25px; text-align: center; }
+        .social-links { display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
+        .social-links a {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid var(--border-color);
+        }
+        .social-links a:hover { background: var(--primary); border-color: var(--primary); }
+
+        /* === Schedule Table === */
+        .schedule-wrap {
+            overflow-x: auto;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            min-width: 600px;
+        }
+        .schedule-table th {
+            background: var(--primary);
+            color: #fff;
+            padding: 20px;
+            font-size: 1.2rem;
+        }
+        .schedule-table td {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+        }
+        .schedule-table tr:last-child td { border-bottom: none; }
+        .schedule-table td:last-child { border-right: none; }
+        .schedule-table tr:hover { background: rgba(255,255,255,0.02); }
+        .badge {
+            display: inline-block; padding: 5px 10px; border-radius: 4px; font-size: 0.85rem; margin-top: 5px;
+        }
+        .bg-red { background: rgba(231, 76, 60, 0.2); color: var(--danger); }
+        .bg-blue { background: rgba(52, 152, 219, 0.2); color: var(--info); }
+        
+        /* === Member Dashboard & Auth === */
+        .auth-container { max-width: 500px; margin: 0 auto; }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        .dash-sidebar {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 20px 0;
+            border: 1px solid var(--border-color);
+        }
+        .dash-nav { list-style: none; }
+        .dash-nav li { padding: 15px 25px; border-left: 3px solid transparent; cursor: pointer; transition: 0.2s; }
+        .dash-nav li:hover, .dash-nav li.active {
+            background: rgba(255, 255, 255, 0.05);
+            border-left-color: var(--primary);
+            color: var(--primary);
+        }
+        .dash-nav li i { margin-right: 10px; width: 20px; }
+        .dash-content { min-height: 500px; }
+        .dash-panel { display: none; animation: fadeIn 0.4s; }
+        .dash-panel.active { display: block; }
+        .status-widget {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px; border-radius: 12px; border: 1px solid var(--border-color);
+            margin-bottom: 20px; background: var(--bg-card);
+        }
+        .status-indicator {
+            padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;
+        }
+
+        /* === Payment Gateway Mock === */
+        .gateway-box {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px;
+        }
+        .gateway-btn {
+            padding: 20px 10px; border-radius: 10px; border: 2px solid transparent;
+            background: var(--bg-card); color: white; cursor: pointer;
+            font-weight: bold; display: flex; flex-direction: column; align-items: center; gap: 10px;
+            transition: 0.3s;
+        }
+        .gateway-btn:hover { transform: translateY(-5px); }
+        .gateway-btn.bkash:hover { border-color: #e2136e; box-shadow: 0 5px 15px rgba(226, 19, 110, 0.3); }
+        .gateway-btn.nagad:hover { border-color: #f7931e; box-shadow: 0 5px 15px rgba(247, 147, 30, 0.3); }
+        .gateway-btn.card-pay:hover { border-color: #3498db; box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3); }
+        .gateway-btn img { height: 40px; object-fit: contain; }
+
+        /* === Footer === */
+        .footer {
+            background: #000;
+            padding: 80px 0 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+        .footer h4 { color: var(--text-main); font-size: 1.3rem; margin-bottom: 25px; font-family: var(--font-en); }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-muted); }
+        .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); }
+
+        /* === Modals & Overlays === */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: var(--z-modal);
+            display: none; align-items: center; justify-content: center;
+            backdrop-filter: blur(5px); opacity: 0; transition: opacity 0.3s;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content {
+            background: var(--bg-card); width: 90%; max-width: 600px;
+            border-radius: 16px; border: 1px solid var(--border-color);
+            position: relative; transform: translateY(50px); transition: transform 0.3s;
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .modal-header { padding: 20px 30px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+        .modal-body { padding: 30px; }
+        .btn-close { background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+        .btn-close:hover { color: var(--danger); }
+
+        /* Loader */
+        .loader-spinner {
+            width: 50px; height: 50px; border: 5px solid rgba(255,255,255,0.1);
+            border-top-color: var(--primary); border-radius: 50%;
+            animation: spin 1s linear infinite; margin: 20px auto; display: none;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Toast Notification */
+        .toast-container {
+            position: fixed; bottom: 30px; right: 30px; z-index: var(--z-toast); display: flex; flex-direction: column; gap: 10px;
+        }
+        .toast {
+            background: var(--bg-card); border-left: 4px solid var(--primary);
+            color: #fff; padding: 15px 25px; border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            display: flex; align-items: center; gap: 15px;
+            animation: slideInRight 0.3s ease forwards;
+        }
+        @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+        /* === Responsive Design (Media Queries) === */
+        @media (max-width: 1024px) {
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 3.5rem; }
+            .dashboard-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .grid-3, .grid-2 { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .info-grid { grid-template-columns: 1fr; }
+            
+            /* Mobile Nav */
+            .hamburger { display: block; }
+            .nav-menu {
+                position: fixed; top: var(--nav-height); left: -100%; width: 100%; height: calc(100vh - var(--nav-height));
+                background: var(--bg-card); flex-direction: column; justify-content: center;
+                transition: var(--transition-normal); border-top: 1px solid var(--border-color);
+            }
+            .nav-menu.active { left: 0; }
+            .nav-menu li { width: 100%; text-align: center; }
+            .nav-link { display: block; padding: 20px; font-size: 1.3rem; }
+            
+            .hero h1 { font-size: 2.8rem; }
+            .hero-stats { flex-direction: column; gap: 20px; align-items: flex-start; }
+            .gateway-box { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
+            .btn { width: 100%; margin-bottom: 10px; }
+            .bmi-content { padding: 30px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!--               NAVIGATION BAR               -->
+    <!-- ========================================== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand" onclick="spa.navigate('home')">
+                <i class="fas fa-dumbbell"></i>
+                <div>
+                    <span class="text-primary">Tarek's</span> <br>
+                    <span style="font-size: 0.9rem; letter-spacing: 2px;">Smart Fitness</span>
+                </div>
+            </a>
+            
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a class="nav-link active" data-target="home">হোম</a></li>
+                <li><a class="nav-link" data-target="services">সার্ভিসসমূহ</a></li>
+                <li><a class="nav-link" data-target="pricing">প্যাকেজ</a></li>
+                <li><a class="nav-link" data-target="bmi">BMI টুল</a></li>
+                <li><a class="nav-link" data-target="schedule">রুটিন</a></li>
+                <li>
+                    <button class="btn btn-primary" style="padding: 8px 20px; font-size: 1rem;" onclick="spa.navigate('portal')">
+                        <i class="fas fa-user"></i> মেম্বার পোর্টাল
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========================================== -->
+    <!--             SPA VIEWS CONTAINER            -->
+    <!-- ========================================== -->
+    
+    <!-- 1. HOME VIEW -->
+    <main id="view-home" class="spa-view active-view">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-subtitle">ব্রাহ্মণবাড়িয়ার প্রিমিয়াম জিম</span>
+                    <h1>নিজেকে ছাড়িয়ে যান<br><span>নতুন রূপে</span> গড়ুন</h1>
+                    <p>অত্যাধুনিক ইকুইপমেন্ট, প্রফেশনাল ট্রেইনার এবং বিশ্বমানের পরিবেশ। আজই শুরু করুন আপনার ফিটনেস ট্রান্সফরমেশন যাত্রা তারেক'স স্মার্ট ফিটনেস জিমের সাথে।</p>
+                    <div class="d-flex" style="flex-wrap: wrap; gap: 15px;">
+                        <button class="btn btn-primary btn-large" onclick="spa.navigate('pricing')">
+                            <i class="fas fa-bolt"></i> আজই ভর্তি হোন
+                        </button>
+                        <button class="btn btn-glass btn-large" onclick="ui.openModal('videoModal')">
+                            <i class="fas fa-play-circle"></i> জিম ট্যুর দেখুন
+                        </button>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <h4>১টি</h4>
+                            <p>মূল শাখা (ব্রাহ্মণবাড়িয়া)</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>১০+</h4>
+                            <p>প্রো ট্রেইনার</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>১৬</h4>
+                            <p>ঘণ্টা খোলা (প্রতিদিন)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Info Bar -->
+        <section class="info-bar">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <h3>প্রতিদিনের সময়সূচী</h3>
+                        <p>সকাল ৭টা-১২টা | দুপুর ২টা-রাত ১১টা</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>লোকেশন</h3>
+                        <p>ব্রাহ্মণবাড়িয়া সদর, বাংলাদেশ</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>যোগাযোগ</h3>
+                        <p>+880 1700-000000</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Short Section -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="grid-2 align-items-center">
+                    <div>
+                        <h4 class="text-primary">আমাদের সম্পর্কে</h4>
+                        <h2>কেন আমরা <span class="text-primary">সেরা?</span></h2>
+                        <p class="mt-3">ব্রাহ্মণবাড়িয়ায় ফিটনেস ইন্ডাস্ট্রিতে আমরাই প্রথম নিয়ে এসেছি সম্পূর্ণ ডিজিটাল ও স্মার্ট জিম ম্যানেজমেন্ট সিস্টেম। আমাদের লক্ষ্য শুধু বডি বিল্ডিং নয়, বরং একটি সুস্থ ও সুন্দর জীবনধারা উপহার দেওয়া।</p>
+                        <ul class="feature-list mt-4">
+                            <li><i class="fas fa-check-circle text-primary"></i> ১০০% অরিজিনাল ইমপোর্টেড মেশিনারি</li>
+                            <li><i class="fas fa-check-circle text-primary"></i> সার্টিফাইড ফিটনেস ট্রেইনার দ্বারা গাইডেন্স</li>
+                            <li><i class="fas fa-check-circle text-primary"></i> অত্যাধুনিক স্টেয়ার ক্লাইম্বার (StairMaster) வசதி</li>
+                            <li><i class="fas fa-check-circle text-primary"></i> সম্পূর্ণ শীতাতপ নিয়ন্ত্রিত ও পরিচ্ছন্ন পরিবেশ</li>
+                        </ul>
+                        <button class="btn btn-outline mt-3" onclick="spa.navigate('services')">বিস্তারিত জানুন</button>
+                    </div>
+                    <div style="position: relative;">
+                        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=800&auto=format&fit=crop" alt="Gym Interior" style="width: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+                        <div class="glass-panel" style="position: absolute; bottom: -20px; left: -20px; padding: 20px; text-align: center;">
+                            <h3 class="text-primary" style="font-family: var(--font-en); font-size: 2.5rem; margin: 0;">500+</h3>
+                            <p style="margin: 0; color: white;">হ্যাপি মেম্বারস</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 2. SERVICES VIEW -->
+    <main id="view-services" class="spa-view">
+        <section class="section-padding" style="background: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1920&auto=format&fit=crop') center/cover; position: relative;">
+            <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.85);"></div>
+            <div class="container" style="position: relative; z-index: 1;">
+                <div class="text-center mb-5">
+                    <h4 class="text-primary">হোয়াট উই অফার</h4>
+                    <h2>আমাদের <span class="text-primary">সার্ভিসসমূহ</span></h2>
+                    <p style="max-width: 600px; margin: 20px auto 0;">আপনার ফিটনেস গোল অনুযায়ী আমরা প্রদান করছি বিশ্বমানের ট্রেনিং প্রোগ্রাম।</p>
+                </div>
+                
+                <div class="grid-3">
+                    <!-- Service 1 -->
+                    <div class="card service-card">
+                        <div class="service-icon"><i class="fas fa-dumbbell"></i></div>
+                        <h3>স্ট্রেন্থ ট্রেনিং</h3>
+                        <p>পেশী গঠন এবং শারীরিক শক্তি বৃদ্ধির জন্য আমাদের রয়েছে অত্যাধুনিক ওয়েট লিফটিং মেশিন এবং ফ্রি ওয়েটস জোন।</p>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="card service-card">
+                        <div class="service-icon"><i class="fas fa-running"></i></div>
+                        <h3>কার্ডিও ও ফ্যাট লস</h3>
+                        <p>দ্রুত ক্যালরি বার্ন করার জন্য রয়েছে প্রফেশনাল ট্রেডমিল, ক্রস ট্রেইনার এবং আমাদের বিশেষ আকর্ষণ <b class="text-primary">স্টেয়ার ক্লাইম্বার (StairMaster)</b>।</p>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="card service-card">
+                        <div class="service-icon"><i class="fas fa-user-ninja"></i></div>
+                        <h3>পার্সোনাল কোচিং</h3>
+                        <p>আমাদের ৫-১০ জন প্রো-ট্রেইনারের নিবিড় তত্ত্বাবধানে আপনার বডি টাইপ অনুযায়ী কাস্টমাইজড ডায়েট ও ওয়ার্কআউট প্ল্যান।</p>
+                    </div>
+                    <!-- Service 4 -->
+                    <div class="card service-card">
+                        <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
+                        <h3>রিহ্যাব ও রিকভারি</h3>
+                        <p>ইনজুরি রিকভারি এবং মাসল রিলাক্সেশনের জন্য স্পেশাল স্ট্রেচিং জোন এবং ফোম রোলিং সেশন।</p>
+                    </div>
+                    <!-- Service 5 -->
+                    <div class="card service-card">
+                        <div class="service-icon"><i class="fas fa-apple-alt"></i></div>
+                        <h3>ডায়েট কনসালটেন্সি</h3>
+                        <p>ওজন কমানো বা বাড়ানোর জন্য বিজ্ঞানসম্মত এবং আপনার বাজেট অনুযায়ী পুষ্টিবিদের ডায়েট চার্ট।</p>
+                    </div>
+                    <!-- Service 6 -->
+                    <div class="card service-card">
+                        <div class="service-icon"><i class="fas fa-fingerprint"></i></div>
+                        <h3>স্মার্ট ট্র্যাকিং</h3>
+                        <p>ডিজিটাল অ্যাটেন্ডেন্স, বডি মেজারমেন্ট হিস্ট্রি এবং প্রোগ্রেস ট্র্যাকিং সম্পূর্ণ অ্যাপ কন্ট্রোলড।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section-padding">
+            <div class="container text-center">
+                <h2>জিম <span class="text-primary">গ্যালারি</span></h2>
+                <div class="grid-4 mt-5">
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=400&auto=format&fit=crop" style="width:100%; border-radius:12px;" alt="Gym 1">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=400&auto=format&fit=crop" style="width:100%; border-radius:12px;" alt="Gym 2">
+                    <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=400&auto=format&fit=crop" style="width:100%; border-radius:12px;" alt="Gym 3">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=400&auto=format&fit=crop" style="width:100%; border-radius:12px;" alt="Gym 4">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 3. PRICING VIEW -->
+    <main id="view-pricing" class="spa-view">
+        <section class="section-padding">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h4 class="text-primary">মেম্বারশিপ প্ল্যানস</h4>
+                    <h2>সাশ্রয়ী মূল্যে <span class="text-primary">প্রিমিয়াম</span> সেবা</h2>
+                    <p style="max-width: 600px; margin: 20px auto 0;">কোনো লুকানো চার্জ নেই। আপনার প্রয়োজন অনুযায়ী সঠিক প্যাকেজটি বেছে নিন।</p>
+                </div>
+                
+                <div class="grid-4">
+                    <!-- Package 1 -->
+                    <div class="card pricing-card">
+                        <h3>ভর্তি ফি</h3>
+                        <div class="price-circle">
+                            <h2>৳২,২৫০</h2>
+                            <span>এককালীন</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> আজীবন জিম মেম্বারশিপ</li>
+                            <li><i class="fas fa-check"></i> ১ম মাসের ফি অন্তর্ভুক্ত</li>
+                            <li><i class="fas fa-check"></i> বডি মেজারমেন্ট চেকআপ</li>
+                            <li><i class="fas fa-check"></i> বেসিক ওয়ার্কআউট রুটিন</li>
+                        </ul>
+                        <button class="btn btn-outline w-100" onclick="logic.initPayment('ভর্তি ফি (আজীবন)', 2250)">ভর্তি হোন</button>
+                    </div>
+
+                    <!-- Package 2 -->
+                    <div class="card pricing-card">
+                        <h3>রেগুলার প্যাকেজ</h3>
+                        <div class="price-circle">
+                            <h2>৳৮৩০</h2>
+                            <span>প্রতি মাস</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> প্রতিদিন জিম এক্সেস</li>
+                            <li><i class="fas fa-check"></i> ওয়েট ট্রেনিং জোন</li>
+                            <li><i class="fas fa-check"></i> রেগুলার কার্ডিও মেশিন</li>
+                            <li class="strike-through"><i class="fas fa-times"></i> স্টেয়ার ক্লাইম্বার মেশিন</li>
+                        </ul>
+                        <button class="btn btn-outline w-100" onclick="logic.initPayment('রেগুলার প্যাকেজ', 830)">বেছে নিন</button>
+                    </div>
+
+                    <!-- Package 3 (Popular) -->
+                    <div class="card pricing-card popular">
+                        <div class="popular-badge">বেস্ট চয়েস</div>
+                        <h3 class="text-primary">প্রিমিয়াম প্যাকেজ</h3>
+                        <div class="price-circle">
+                            <h2 class="text-primary">৳১,২০০</h2>
+                            <span>প্রতি মাস</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> সকল জোন এক্সেস</li>
+                            <li><i class="fas fa-check"></i> <b class="text-primary">স্টেয়ার ক্লাইম্বার যুক্ত</b></li>
+                            <li><i class="fas fa-check"></i> স্মার্ট লকার সুবিধা</li>
+                            <li><i class="fas fa-check"></i> মান্থলি প্রোগ্রেস রিভিউ</li>
+                        </ul>
+                        <button class="btn btn-primary w-100" onclick="logic.initPayment('প্রিমিয়াম প্যাকেজ', 1200)">বেছে নিন</button>
+                    </div>
+
+                    <!-- Package 4 -->
+                    <div class="card pricing-card">
+                        <h3>পার্সোনাল কোচিং</h3>
+                        <div class="price-circle">
+                            <h2>৳৬,০০০</h2>
+                            <span>প্রতি মাস</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> প্রিমিয়াম প্যাকেজ অন্তর্ভুক্ত</li>
+                            <li><i class="fas fa-check"></i> ১-টু-১ ভিআইপি গাইডেন্স</li>
+                            <li><i class="fas fa-check"></i> কাস্টম ডায়েট চার্ট</li>
+                            <li><i class="fas fa-check"></i> গ্যারান্টেড রেজাল্টস</li>
+                        </ul>
+                        <button class="btn btn-outline w-100" onclick="logic.initPayment('পার্সোনাল কোচিং', 6000)">বেছে নিন</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 4. BMI CALCULATOR VIEW -->
+    <main id="view-bmi" class="spa-view">
+        <section class="section-padding">
+            <div class="container">
+                <div class="grid-2 align-items-center">
+                    <div>
+                        <h4 class="text-primary">স্মার্ট টুল</h4>
+                        <h2>বডি ম্যাস <span class="text-primary">ইনডেক্স (BMI)</span></h2>
+                        <p class="mt-3">আপনার উচ্চতা এবং ওজনের অনুপাত হিসেব করে জেনে নিন আপনার বর্তমান ফিটনেস লেভেল কেমন এবং আপনার জন্য কোন প্রোগ্রামটি সবচেয়ে ভালো হবে।</p>
+                        
+                        <ul class="feature-list mt-4">
+                            <li><i class="fas fa-circle text-warning" style="font-size:10px;"></i> <span class="text-warning">আন্ডারওয়েট:</span> ১৮.৫ এর নিচে</li>
+                            <li><i class="fas fa-circle text-success" style="font-size:10px;"></i> <span class="text-success">স্বাভাবিক:</span> ১৮.৫ - ২৪.৯</li>
+                            <li><i class="fas fa-circle text-danger" style="font-size:10px;"></i> <span class="text-danger">ওভারওয়েট:</span> ২৫ - ২৯.৯</li>
+                            <li><i class="fas fa-circle" style="color:#c0392b; font-size:10px;"></i> <span style="color:#c0392b;">স্থূলতা:</span> ৩০ বা তার বেশি</li>
+                        </ul>
+                    </div>
+
+                    <div class="bmi-container">
+                        <div class="bmi-content">
+                            <h3 class="mb-4">ক্যালকুলেট করুন</h3>
+                            <form id="bmiForm" onsubmit="event.preventDefault(); logic.calculateBMI();">
+                                <div class="form-group">
+                                    <label>ওজন (Weight) - কেজি(kg) তে</label>
+                                    <input type="number" step="0.1" class="form-control" id="bmi-weight" placeholder="যেমন: 75.5" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>উচ্চতা (Height) - সেন্টিমিটার(cm) এ</label>
+                                    <input type="number" class="form-control" id="bmi-height" placeholder="যেমন: 175" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 btn-large mt-2">
+                                    <i class="fas fa-calculator"></i> ফলাফল দেখুন
+                                </button>
+                            </form>
+
+                            <div id="bmi-result-box">
+                                <h4 class="text-center" id="bmi-category" style="margin-bottom: 5px;">---</h4>
+                                <h2 class="text-center" id="bmi-score" style="font-size: 3rem; margin-bottom: 0;">0.0</h2>
+                                
+                                <div class="bmi-meter">
+                                    <div class="bmi-fill" id="bmi-bar"></div>
+                                </div>
+                                
+                                <div style="background: rgba(0,0,0,0.5); padding: 15px; border-radius: 8px; margin-top: 15px;">
+                                    <p id="bmi-suggestion" style="margin:0; font-size: 0.95rem; color: #fff;"></p>
+                                </div>
+                                <button class="btn btn-outline w-100 mt-3" id="bmi-action-btn" style="display:none;" onclick="spa.navigate('pricing')">প্যাকেজ দেখুন</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 5. SCHEDULE VIEW -->
+    <main id="view-schedule" class="spa-view">
+        <section class="section-padding">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h4 class="text-primary">টাইমটেবিল</h4>
+                    <h2>জিম <span class="text-primary">সময়সূচী</span></h2>
+                    <p>সপ্তাহে ৭ দিনই আমাদের জিম খোলা থাকে মেম্বারদের জন্য।</p>
+                </div>
+
+                <div class="schedule-wrap">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>শিফট</th>
+                                <th>সময়</th>
+                                <th>উপলব্ধ সার্ভিস</th>
+                                <th>ট্রেইনার উপস্থিতি</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fas fa-sun text-warning"></i> মর্নিং শিফট</td>
+                                <td>সকাল ৭:০০ - দুপুর ১২:০০</td>
+                                <td>কার্ডিও, স্ট্রেন্থ, স্টেয়ার ক্লাইম্বার</td>
+                                <td><span class="badge bg-blue">হ্যাঁ (৩ জন)</span></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-coffee" style="color:#d35400;"></i> ব্রেক টাইম</td>
+                                <td>দুপুর ১২:০০ - দুপুর ২:০০</td>
+                                <td>জিম বন্ধ (পরিষ্কার পরিচ্ছন্নতা)</td>
+                                <td><span class="badge bg-red">না</span></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-moon text-info"></i> ইভিনিং শিফট</td>
+                                <td>দুপুর ২:০০ - রাত ১১:০০</td>
+                                <td>সকল সার্ভিস, পার্সোনাল ট্রেনিং</td>
+                                <td><span class="badge bg-blue">হ্যাঁ (৫ জন)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Rules -->
+                <div class="card mt-5 bg-glass">
+                    <h3><i class="fas fa-exclamation-triangle text-warning"></i> জিমের নিয়মাবলী</h3>
+                    <ul class="feature-list mt-3">
+                        <li><i class="fas fa-arrow-right text-primary"></i> জিমে প্রবেশের সময় অবশ্যই ডিজিটাল কার্ড বা অ্যাপ স্ক্যান করতে হবে।</li>
+                        <li><i class="fas fa-arrow-right text-primary"></i> পরিষ্কার তোয়ালে এবং জিমের জুতো সাথে আনা বাধ্যতামূলক।</li>
+                        <li><i class="fas fa-arrow-right text-primary"></i> স্টেয়ার ক্লাইম্বার মেশিনটি শুধুমাত্র প্রিমিয়াম মেম্বারদের জন্য বরাদ্দ।</li>
+                        <li><i class="fas fa-arrow-right text-primary"></i> ইকুইপমেন্ট ব্যবহারের পর নির্দিষ্ট স্থানে গুছিয়ে রাখুন।</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 6. MEMBER PORTAL (AUTH/DASHBOARD/CHECKOUT) -->
+    <main id="view-portal" class="spa-view">
+        <section class="section-padding" id="auth-section">
+            <div class="container auth-container">
+                <div class="card text-center" style="padding: 50px 30px;">
+                    <i class="fas fa-user-circle text-primary mb-4" style="font-size: 4rem;"></i>
+                    <h2>মেম্বার <span class="text-primary">লগইন</span></h2>
+                    <p>ড্যাশবোর্ড অ্যাক্সেস করতে আপনার ফোন নম্বর দিন</p>
+                    
+                    <form onsubmit="event.preventDefault(); logic.login();" class="mt-4 text-left">
+                        <div class="form-group">
+                            <label>ফোন নম্বর</label>
+                            <input type="tel" id="login-phone" class="form-control" placeholder="017XXXXXXX" required pattern="[0-9]{11}">
+                        </div>
+                        <div class="form-group">
+                            <label>পিন কোড (ডেমো: 1234)</label>
+                            <input type="password" id="login-pin" class="form-control" placeholder="****" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 btn-large mt-3">
+                            <i class="fas fa-sign-in-alt"></i> লগইন করুন
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" id="dashboard-section" style="display: none; padding-top: 50px;">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>স্বাগতম, <span class="text-primary" id="dash-user-name">মেম্বার</span></h2>
+                    <button class="btn btn-outline" onclick="logic.logout()"><i class="fas fa-sign-out-alt"></i> লগআউট</button>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Sidebar -->
+                    <div class="dash-sidebar">
+                        <ul class="dash-nav">
+                            <li class="active" onclick="ui.switchDashTab('dash-overview', this)"><i class="fas fa-home"></i> ওভারভিউ</li>
+                            <li onclick="ui.switchDashTab('dash-payment', this)"><i class="fas fa-credit-card"></i> পেমেন্ট ও প্যাকেজ</li>
+                            <li onclick="ui.switchDashTab('dash-qr', this)"><i class="fas fa-qrcode"></i> ডিজিটাল আইডি</li>
+                            <li onclick="ui.switchDashTab('dash-notices', this)"><i class="fas fa-bell"></i> নোটিশ বোর্ড</li>
+                        </ul>
+                    </div>
+
+                    <!-- Content Area -->
+                    <div class="dash-content">
+                        <!-- Tab 1: Overview -->
+                        <div id="dash-overview" class="dash-panel active">
+                            <div class="status-widget">
+                                <div>
+                                    <h4 style="margin:0; color:var(--text-muted);">মেম্বারশিপ স্ট্যাটাস</h4>
+                                    <h2 style="margin:5px 0 0;" id="overview-pkg-name">---</h2>
+                                </div>
+                                <div id="overview-badge" class="status-indicator bg-red" style="border:1px solid var(--danger);">
+                                    <i class="fas fa-times-circle"></i> Unpaid
+                                </div>
+                            </div>
+                            
+                            <div class="grid-2">
+                                <div class="card bg-glass">
+                                    <h4 class="text-primary"><i class="fas fa-calendar-check"></i> মেয়াদ শেষ</h4>
+                                    <h2 class="mt-2" id="overview-expiry">---</h2>
+                                    <p class="mt-1" id="overview-days-left">প্যাকেজ কিনে শুরু করুন</p>
+                                </div>
+                                <div class="card bg-glass">
+                                    <h4 class="text-primary"><i class="fas fa-running"></i> আজকের গোল</h4>
+                                    <h2 class="mt-2">চেস্ট ও ট্রাইসেপ</h2>
+                                    <p class="mt-1">ট্রেইনার: রনি</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: Payment/Checkout -->
+                        <div id="dash-payment" class="dash-panel">
+                            <div class="card">
+                                <h3>নতুন প্যাকেজ কিনুন / রিনিউ করুন</h3>
+                                <p>নিরাপদ অনলাইন ডেমো পেমেন্ট গেটওয়ে</p>
+                                
+                                <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; border: 1px dashed var(--primary); margin: 20px 0;">
+                                    <h4>নির্বাচিত প্যাকেজ: <span id="checkout-pkg-name" class="text-primary">কোনোটি নয়</span></h4>
+                                    <h2 class="mt-2">পরিমাণ: <span id="checkout-amt">৳ 0</span></h2>
+                                    <button class="btn btn-outline mt-3 btn-sm" onclick="spa.navigate('pricing')">প্যাকেজ পরিবর্তন করুন</button>
+                                </div>
+
+                                <h4>পেমেন্ট মেথড নির্বাচন করুন:</h4>
+                                <div class="gateway-box" id="gateway-box" style="pointer-events: none; opacity: 0.5;">
+                                    <button class="gateway-btn bkash" onclick="logic.processPayment('bKash')">
+                                        <i class="fas fa-mobile-alt" style="font-size:1.5rem; color:#e2136e;"></i>
+                                        বিকাশ (bKash)
+                                    </button>
+                                    <button class="gateway-btn nagad" onclick="logic.processPayment('Nagad')">
+                                        <i class="fas fa-mobile-alt" style="font-size:1.5rem; color:#f7931e;"></i>
+                                        নগদ (Nagad)
+                                    </button>
+                                    <button class="gateway-btn card-pay" onclick="logic.processPayment('Card')">
+                                        <i class="fas fa-credit-card" style="font-size:1.5rem; color:#3498db;"></i>
+                                        ভিসা/মাস্টারকার্ড
+                                    </button>
+                                </div>
+                                <div id="payment-loader" class="loader-spinner"></div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 3: Digital ID -->
+                        <div id="dash-qr" class="dash-panel text-center">
+                            <div class="card" style="max-width: 400px; margin: 0 auto;">
+                                <h3>ডিজিটাল এন্ট্রি পাস</h3>
+                                <p>জিমে প্রবেশের সময় এই QR কোডটি স্ক্যান করুন</p>
+                                <div style="background: #fff; padding: 20px; border-radius: 12px; display: inline-block; margin: 20px 0;">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TarekGymMember12345" alt="QR Code">
+                                </div>
+                                <h4 class="text-primary">ID: TSF-12345</h4>
+                            </div>
+                        </div>
+
+                        <!-- Tab 4: Notices -->
+                        <div id="dash-notices" class="dash-panel">
+                            <div class="card">
+                                <h3><i class="fas fa-bullhorn text-warning"></i> জিমের নোটিশ বোর্ড</h3>
+                                <ul class="feature-list mt-4" style="border-top: 1px solid var(--border-color); padding-top: 20px;">
+                                    <li>
+                                        <i class="fas fa-bell text-primary"></i> 
+                                        <div>
+                                            <strong>ঈদের ছুটি সংক্রান্ত:</strong>
+                                            <p style="margin:0; font-size: 0.9rem;">আগামী ১০ তারিখ থেকে ১২ তারিখ পর্যন্ত জিম সম্পূর্ণ বন্ধ থাকবে।</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-bell text-primary"></i> 
+                                        <div>
+                                            <strong>নতুন মেশিন সংযোজন:</strong>
+                                            <p style="margin:0; font-size: 0.9rem;">আমাদের প্রিমিয়াম মেম্বারদের জন্য নতুন ২টি স্টেয়ার ক্লাইম্বার আনা হয়েছে।</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================== -->
+    <!--                   FOOTER                   -->
+    <!-- ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4 style="font-size: 1.8rem;">
+                        <i class="fas fa-dumbbell text-primary"></i> Tarek's Smart Fitness
+                    </h4>
+                    <p>ব্রাহ্মণবাড়িয়ার সবচেয়ে অত্যাধুনিক এবং প্রিমিয়াম ফিটনেস সেন্টার। আজই যুক্ত হোন আমাদের সাথে এবং নিজেকে গড়ে তুলুন নতুন রূপে।</p>
+                    <div class="social-links mt-3" style="justify-content: flex-start;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>কুইক লিংকস</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="spa.navigate('home')">হোম</a></li>
+                        <li><a href="#" onclick="spa.navigate('services')">সার্ভিসসমূহ</a></li>
+                        <li><a href="#" onclick="spa.navigate('pricing')">মেম্বারশিপ প্যাকেজ</a></li>
+                        <li><a href="#" onclick="spa.navigate('bmi')">BMI ক্যালকুলেটর</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>সাপোর্ট</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">যোগাযোগ করুন</a></li>
+                        <li><a href="#">প্রাইভেসি পলিসি</a></li>
+                        <li><a href="#">শর্তাবলী (Terms)</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>ঠিকানা</h4>
+                    <ul class="footer-links text-muted">
+                        <li><i class="fas fa-map-marker-alt text-primary"></i> সদর, ব্রাহ্মণবাড়িয়া, চট্টগ্রাম, বাংলাদেশ</li>
+                        <li><i class="fas fa-phone text-primary"></i> +880 1700-000000</li>
+                        <li><i class="fas fa-envelope text-primary"></i> contact@tareksgym.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tarek's Smart Fitness Gym. All Rights Reserved. Developed with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!--                   MODALS                   -->
+    <!-- ========================================== -->
+    
+    <!-- Video Modal -->
+    <div class="modal-overlay" id="videoModal">
+        <div class="modal-content" style="max-width: 800px; background: #000;">
+            <div class="modal-header" style="border:none; padding-bottom: 0;">
+                <h3 style="margin:0;"></h3>
+                <button class="btn-close" onclick="ui.closeModal('videoModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" style="padding: 10px;">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                    <!-- Dummy Video Embedded -->
+                    <iframe id="gymVideoFrame" style="position: absolute; top:0; left:0; width:100%; height:100%; border:none; border-radius: 8px;" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ========================================== -->
+    <!--             JAVASCRIPT LOGIC               -->
+    <!-- ========================================== -->
+    <script>
+        /**
+         * Core Application Logic structured in Modules
+         * 1. SPA Router (Single Page Application logic)
+         * 2. UI Interactions (Modals, Nav, Tabs, Toasts)
+         * 3. Business Logic (BMI, Auth, Payment State)
+         */
+
+        // -------------------------
+        // 1. SPA ROUTER MODULE
+        // -------------------------
+        const spa = {
+            currentView: 'home',
+            views: ['home', 'services', 'pricing', 'bmi', 'schedule', 'portal'],
+            
+            init: function() {
+                // Attach click listeners to nav links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        const target = e.target.getAttribute('data-target');
+                        if(target) this.navigate(target);
+                    });
+                });
+            },
+
+            navigate: function(viewId) {
+                if(!this.views.includes(viewId)) return;
+                
+                // Update Nav Active State
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('data-target') === viewId) {
+                        link.classList.add('active');
+                    }
+                });
+
+                // Hide all views, show target view
+                this.views.forEach(v => {
+                    document.getElementById(`view-${v}`).classList.remove('active-view');
+                });
+                
+                const targetEl = document.getElementById(`view-${viewId}`);
+                targetEl.classList.add('active-view');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+
+                // Close mobile menu if open
+                const navMenu = document.getElementById('navMenu');
+                if(navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+
+                // Specialized Routing Logic
+                if(viewId === 'portal') {
+                    logic.checkAuthState();
+                }
+
+                this.currentView = viewId;
+            }
+        };
+
+        // -------------------------
+        // 2. UI INTERACTIONS MODULE
+        // -------------------------
+        const ui = {
+            init: function() {
+                // Navbar scroll effect
+                window.addEventListener('scroll', () => {
+                    const nav = document.getElementById('navbar');
+                    if(window.scrollY > 50) nav.classList.add('scrolled');
+                    else nav.classList.remove('scrolled');
+                });
+
+                // Hamburger Menu
+                document.getElementById('hamburger').addEventListener('click', () => {
+                    document.getElementById('navMenu').classList.toggle('active');
+                });
+            },
+
+            openModal: function(id) {
+                document.getElementById(id).classList.add('active');
+            },
+
+            closeModal: function(id) {
+                document.getElementById(id).classList.remove('active');
+                // Stop video if closing video modal
+                if(id === 'videoModal') {
+                    const iframe = document.getElementById('gymVideoFrame');
+                    const src = iframe.src;
+                    iframe.src = src; // Reloads iframe to stop video
+                }
+            },
+
+            showToast: function(message, type = 'success') {
+                const container = document.getElementById('toastContainer');
+                const toast = document.createElement('div');
+                toast.className = 'toast';
+                
+                let icon = 'fa-check-circle';
+                let color = 'var(--success)';
+                if(type === 'error') { icon = 'fa-exclamation-circle'; color = 'var(--danger)'; }
+                if(type === 'warning') { icon = 'fa-exclamation-triangle'; color = 'var(--warning)'; }
+
+                toast.style.borderLeftColor = color;
+                toast.innerHTML = `<i class="fas ${icon}" style="color:${color}; font-size:1.5rem;"></i> <div>${message}</div>`;
+                
+                container.appendChild(toast);
+                
+                // Remove after 3 seconds
+                setTimeout(() => {
+                    toast.style.animation = 'slideInRight 0.3s ease reverse forwards';
+                    setTimeout(() => toast.remove(), 300);
+                }, 3000);
+            },
+
+            switchDashTab: function(tabId, el) {
+                // Update Sidebar Classes
+                document.querySelectorAll('.dash-nav li').forEach(li => li.classList.remove('active'));
+                el.classList.add('active');
+                // Switch Content
+                document.querySelectorAll('.dash-panel').forEach(p => p.classList.remove('active'));
+                document.getElementById(tabId).classList.add('active');
+            }
+        };
+
+        // -------------------------
+        // 3. BUSINESS LOGIC MODULE
+        // -------------------------
+        const logic = {
+            state: {
+                isLoggedIn: false,
+                userPhone: '',
+                pkgName: '',
+                pkgAmount: 0,
+                isPaid: false,
+                expiryDate: null
+            },
+
+            init: function() {
+                // Check local storage for mocked session
+                const savedState = localStorage.getItem('gymState');
+                if(savedState) {
+                    this.state = JSON.parse(savedState);
+                }
+            },
+
+            saveState: function() {
+                localStorage.setItem('gymState', JSON.stringify(this.state));
+                this.updateDashboardUI();
+            },
+
+            // BMI Logic Based on Strict Rules
+            calculateBMI: function() {
+                const w = parseFloat(document.getElementById('bmi-weight').value);
+                let h = parseFloat(document.getElementById('bmi-height').value);
+                
+                if(!w || !h || w <= 0 || h <= 0) {
+                    ui.showToast('দয়া করে সঠিক ওজন এবং উচ্চতা প্রদান করুন।', 'error');
+                    return;
+                }
+
+                // Convert cm to meters
+                h = h / 100;
+                const bmi = (w / (h * h)).toFixed(1);
+                
+                const resultBox = document.getElementById('bmi-result-box');
+                const catEl = document.getElementById('bmi-category');
+                const scoreEl = document.getElementById('bmi-score');
+                const sugEl = document.getElementById('bmi-suggestion');
+                const bar = document.getElementById('bmi-bar');
+                const actBtn = document.getElementById('bmi-action-btn');
+
+                resultBox.style.display = 'block';
+                scoreEl.innerText = bmi;
+                actBtn.style.display = 'block';
+                
+                let color, catTxt, sugTxt, barWidth;
+
+                if (bmi < 18.5) {
+                    color = 'var(--warning)';
+                    catTxt = 'আন্ডারওয়েট (Underweight)';
+                    sugTxt = "আপনার ওজন বাড়ানো প্রয়োজন। আমাদের 'পার্সোনাল কোচিং' এবং মাসল গেইন ডায়েট ফলো করতে পারেন।";
+                    barWidth = '20%';
+                } 
+                else if (bmi >= 18.5 && bmi <= 24.9) {
+                    color = 'var(--success)';
+                    catTxt = 'স্বাভাবিক (Normal)';
+                    sugTxt = "দারুণ! আপনার ফিটনেস লেভেল ভালো। এটি ধরে রাখতে আমাদের রেগুলার প্যাকেজ নিয়ে ব্যায়াম চালিয়ে যান।";
+                    barWidth = '50%';
+                } 
+                else if (bmi >= 25 && bmi <= 29.9) {
+                    color = '#e67e22'; // Orange
+                    catTxt = 'ওভারওয়েট (Overweight)';
+                    sugTxt = "আপনার ওজন কমানো প্রয়োজন। আমাদের কার্ডিও জোন এবং ট্রেডমিল রেগুলার ব্যবহার করুন।";
+                    barWidth = '75%';
+                } 
+                else {
+                    color = 'var(--danger)';
+                    catTxt = 'স্থূলতা (Obese)';
+                    sugTxt = "সতর্কতা! আপনার দ্রুত ওজন কমানো প্রয়োজন। প্রিমিয়াম প্যাকেজ নিয়ে স্টেয়ার ক্লাইম্বার ও ফ্যাট লস প্রোগ্রাম শুরু করুন।";
+                    barWidth = '100%';
+                }
+
+                resultBox.style.borderColor = color;
+                catEl.style.color = color;
+                catEl.innerText = catTxt;
+                scoreEl.style.color = color;
+                sugEl.innerText = sugTxt;
+                
+                // Animate bar
+                setTimeout(() => {
+                    bar.style.width = barWidth;
+                    bar.style.backgroundColor = color;
+                }, 100);
+
+                ui.showToast('BMI ক্যালকুলেশন সম্পন্ন হয়েছে!');
+                
+                // Scroll to result
+                resultBox.scrollIntoView({behavior: "smooth", block: "center"});
+            },
+
+            // Auth Logic
+            login: function() {
+                const phone = document.getElementById('login-phone').value;
+                const pin = document.getElementById('login-pin').value;
+                
+                if(phone.length === 11 && pin !== "") {
+                    this.state.isLoggedIn = true;
+                    this.state.userPhone = phone;
+                    this.saveState();
+                    ui.showToast('সফলভাবে লগইন হয়েছে!');
+                    this.checkAuthState();
+                } else {
+                    ui.showToast('সঠিক ফোন নম্বর এবং পিন দিন।', 'error');
+                }
+            },
+
+            logout: function() {
+                this.state.isLoggedIn = false;
+                this.saveState();
+                ui.showToast('লগআউট সম্পন্ন হয়েছে।');
+                this.checkAuthState();
+            },
+
+            checkAuthState: function() {
+                const authSec = document.getElementById('auth-section');
+                const dashSec = document.getElementById('dashboard-section');
+                
+                if(this.state.isLoggedIn) {
+                    authSec.style.display = 'none';
+                    dashSec.style.display = 'block';
+                    document.getElementById('dash-user-name').innerText = this.state.userPhone;
+                    this.updateDashboardUI();
+                } else {
+                    authSec.style.display = 'block';
+                    dashSec.style.display = 'none';
+                }
+            },
+
+            // Payment Logic
+            initPayment: function(name, amount) {
+                this.state.pkgName = name;
+                this.state.pkgAmount = amount;
+                
+                // If not logged in, force login first, but save intention
+                if(!this.state.isLoggedIn) {
+                    ui.showToast('পেমেন্ট করতে আগে লগইন করুন।', 'warning');
+                    spa.navigate('portal');
+                    return;
+                }
+                
+                spa.navigate('portal');
+                // Switch to payment tab programmatically
+                const payTab = document.querySelectorAll('.dash-nav li')[1];
+                ui.switchDashTab('dash-payment', payTab);
+                this.updateDashboardUI();
+            },
+
+            processPayment: function(gateway) {
+                if(this.state.pkgAmount === 0) {
+                    ui.showToast('আগে একটি প্যাকেজ নির্বাচন করুন।', 'error');
+                    return;
+                }
+
+                // UI Loading State
+                const box = document.getElementById('gateway-box');
+                const loader = document.getElementById('payment-loader');
+                box.style.display = 'none';
+                loader.style.display = 'block';
+
+                // Simulate 2000ms Network Request
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    box.style.display = 'grid';
+                    
+                    // Success State Changes
+                    this.state.isPaid = true;
+                    
+                    // Set Expiry Date exactly 1 month from now
+                    const date = new Date();
+                    date.setMonth(date.getMonth() + 1);
+                    this.state.expiryDate = date.toISOString();
+                    
+                    this.saveState();
+                    ui.showToast(`✅ ${gateway} এর মাধ্যমে পেমেন্ট সফলভাবে সম্পন্ন হয়েছে!`);
+                    
+                    // Switch back to overview tab
+                    const overviewTab = document.querySelectorAll('.dash-nav li')[0];
+                    ui.switchDashTab('dash-overview', overviewTab);
+                    
+                }, 2000);
+            },
+
+            updateDashboardUI: function() {
+                // Checkout Box
+                const checkoutName = document.getElementById('checkout-pkg-name');
+                const checkoutAmt = document.getElementById('checkout-amt');
+                const gatewayBox = document.getElementById('gateway-box');
+                
+                if(this.state.pkgAmount > 0) {
+                    checkoutName.innerText = this.state.pkgName;
+                    checkoutAmt.innerText = `৳${this.state.pkgAmount}`;
+                    gatewayBox.style.pointerEvents = 'auto';
+                    gatewayBox.style.opacity = '1';
+                }
+
+                // Overview Status
+                const badge = document.getElementById('overview-badge');
+                const pkgText = document.getElementById('overview-pkg-name');
+                const expText = document.getElementById('overview-expiry');
+                const daysText = document.getElementById('overview-days-left');
+                
+                if(this.state.isPaid) {
+                    badge.className = 'status-indicator text-success';
+                    badge.style.border = '1px solid var(--success)';
+                    badge.style.background = 'rgba(46, 204, 113, 0.1)';
+                    badge.innerHTML = '<i class="fas fa-check-circle"></i> Paid (অ্যাক্টিভ)';
+                    
+                    pkgText.innerText = this.state.pkgName;
+                    pkgText.className = 'text-primary';
+                    
+                    const d = new Date(this.state.expiryDate);
+                    expText.innerText = d.toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' });
+                    
+                    // Calc days left
+                    const diffTime = Math.abs(d - new Date());
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    daysText.innerText = `মেয়াদ বাকি: ${diffDays} দিন`;
+                    daysText.style.color = 'var(--success)';
+                } else {
+                    badge.className = 'status-indicator text-danger';
+                    badge.style.border = '1px solid var(--danger)';
+                    badge.style.background = 'rgba(231, 76, 60, 0.1)';
+                    badge.innerHTML = '<i class="fas fa-times-circle"></i> Unpaid (বকেয়া)';
+                    
+                    pkgText.innerText = "প্যাকেজ কেনা হয়নি";
+                    pkgText.className = 'text-muted';
+                    expText.innerText = "---";
+                    daysText.innerText = "প্যাকেজ কিনে শুরু করুন";
+                    daysText.style.color = 'var(--text-muted)';
+                }
+            }
+        };
+
+        // -------------------------
+        // INITIALIZE APP
+        // -------------------------
+        document.addEventListener('DOMContentLoaded', () => {
+            spa.init();
+            ui.init();
+            logic.init();
+        });
+
+    </script>
+</body>
+</html>
